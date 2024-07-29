@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e44v7sfmjoh7"
+path="res://.godot/imported/Grassland Adventure.mp3-cac40e78d19b687ce435192583e07471.mp3str"
+
+[deps]
+
+source_file="res://Sons/Grassland Adventure.mp3"
+dest_files=["res://.godot/imported/Grassland Adventure.mp3-cac40e78d19b687ce435192583e07471.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

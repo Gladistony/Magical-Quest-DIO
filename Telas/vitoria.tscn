@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://ytpmqhmrf1mn"]
+
+[ext_resource type="Script" path="res://Telas/vitoria.gd" id="1_cdtcf"]
+[ext_resource type="Texture2D" uid="uid://cedjm4s21ku48" path="res://Telas/logo.png" id="1_v4jua"]
+[ext_resource type="FontFile" uid="uid://ddsioq8mwkig1" path="res://Assets/Fontes/RevMiniPixel.ttf" id="2_62c8d"]
+[ext_resource type="Theme" uid="uid://dhc257gbqi3rw" path="res://Temas/Botao_inicio.tres" id="3_0q8wc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogpj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2go3v"]
+bg_color = Color(0.980392, 0.380392, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.117647, 0.117647, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55iiy"]
+
+[node name="Vitoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdtcf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="logo" type="TextureRect" parent="VBoxContainer/Logo"]
+layout_mode = 2
+texture = ExtResource("1_v4jua")
+
+[node name="Label" type="Label" parent="VBoxContainer/Logo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_62c8d")
+theme_override_font_sizes/font_size = 32
+text = "Magical Quest"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ogpj4")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_62c8d")
+theme_override_font_sizes/font_size = 16
+text = "Vitoria !!!"
+horizontal_alignment = 1
+
+[node name="pontos" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_62c8d")
+theme_override_font_sizes/font_size = 16
+text = "Total de pontos: XXXX"
+horizontal_alignment = 1
+
+[node name="nome" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_62c8d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2go3v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_55iiy")
+placeholder_text = "Digite seu nome"
+alignment = 1
+max_length = 10
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ogpj4")
+
+[node name="Enviar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0q8wc")
+text = "Enviar"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ogpj4")
+
+[node name="Enviar2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0q8wc")
+text = "Voltar a Tela Titulo"
+
+[connection signal="pressed" from="VBoxContainer/Enviar" to="." method="_on_enviar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Enviar2" to="." method="_on_enviar_2_pressed"]

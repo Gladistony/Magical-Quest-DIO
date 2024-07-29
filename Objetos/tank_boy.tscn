@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8hbco5up3eu7"]
+
+[ext_resource type="Texture2D" uid="uid://7ehg63ek2tx6" path="res://Assets/Imagem/Tank_BOss.png" id="1_a84gc"]
+[ext_resource type="Script" path="res://Scripts/Objetos/tank_boy.gd" id="1_nh1qw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usi4v"]
+size = Vector2(27, 19)
+
+[sub_resource type="Animation" id="Animation_4h7lx"]
+resource_name = "moving"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_7fbx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3opa3"]
+_data = {
+"RESET": SubResource("Animation_7fbx4"),
+"moving": SubResource("Animation_4h7lx")
+}
+
+[node name="TankBoy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_nh1qw")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_usi4v")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_a84gc")
+hframes = 11
+
+[node name="missel_point" type="Marker2D" parent="sprite"]
+position = Vector2(-2, 7)
+
+[node name="bomb_point" type="Marker2D" parent="sprite"]
+position = Vector2(0, -1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3opa3")
+}
+autoplay = "moving"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="bomb_cooldown" type="Timer" parent="."]
+
+[node name="missile_cooldown" type="Timer" parent="."]
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -11)
+target_position = Vector2(-16, 0)
+collision_mask = 2

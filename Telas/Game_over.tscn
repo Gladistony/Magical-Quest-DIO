@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://lg6mn72xr0uv"]
+
+[ext_resource type="Texture2D" uid="uid://7kq6gecwuiej" path="res://Telas/game_over.png" id="1_0hhxf"]
+[ext_resource type="Script" path="res://Telas/Game_over.gd" id="1_c6t80"]
+[ext_resource type="Theme" uid="uid://dhc257gbqi3rw" path="res://Temas/Botao_inicio.tres" id="2_tvqrq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0726y"]
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c6t80")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_0hhxf")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0726y")
+
+[node name="Reiniciar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tvqrq")
+text = "Recomeçar"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0726y")
+
+[node name="VoltarInicio" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tvqrq")
+text = "Voltar a Tela Inicial"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0726y")
+
+[node name="Sair" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tvqrq")
+text = "Sair"
+
+[connection signal="pressed" from="VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/VoltarInicio" to="." method="_on_voltar_inicio_pressed"]
+[connection signal="pressed" from="VBoxContainer/Sair" to="." method="_on_sair_pressed"]

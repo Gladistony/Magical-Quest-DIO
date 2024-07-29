@@ -11,6 +11,8 @@ var seconds = 0
 @export_range(0,5) var defaut_minutes := 2
 @export_range(0,59) var defaut_seconds := 0
 
+signal time_is_up()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	coins_counter.text = str("%04d" % Global.coins)
@@ -24,7 +26,8 @@ func _process(delta):
 	coins_counter.text = str("%04d" % Global.coins)
 	score_count.text = str("%04d" % Global.score)
 	life_count.text = str("%02d" % Global.life)
-
+	if minutes == 0 and seconds == 0:
+		emit_signal("time_is_up")
 
 func _on_clock_timer_timeout():
 	if seconds == 0:

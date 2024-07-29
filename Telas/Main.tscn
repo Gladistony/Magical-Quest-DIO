@@ -1,0 +1,176 @@
+[gd_scene load_steps=10 format=3 uid="uid://ciptswne7pckq"]
+
+[ext_resource type="Script" path="res://Telas/Main.gd" id="1_58n0q"]
+[ext_resource type="Texture2D" uid="uid://iyljd7xbx06b" path="res://Telas/main_tela.png" id="1_raa01"]
+[ext_resource type="Texture2D" uid="uid://cedjm4s21ku48" path="res://Telas/logo.png" id="2_u82k4"]
+[ext_resource type="FontFile" uid="uid://ddsioq8mwkig1" path="res://Assets/Fontes/RevMiniPixel.ttf" id="3_wrwyh"]
+[ext_resource type="Theme" uid="uid://dhc257gbqi3rw" path="res://Temas/Botao_inicio.tres" id="4_ewsva"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3mkx0"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgm8o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qepmf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ic0f3"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_58n0q")
+
+[node name="Fundo" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_3mkx0")
+position = Vector2(324, 160)
+scale = Vector2(0.329167, 0.321932)
+texture = ExtResource("1_raa01")
+
+[node name="Container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -62.0
+offset_right = 228.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="Itens" type="VBoxContainer" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Logo" type="HBoxContainer" parent="Container/VBoxContainer/HBoxContainer/Itens"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Container/VBoxContainer/HBoxContainer/Itens/Logo"]
+layout_mode = 2
+texture = ExtResource("2_u82k4")
+
+[node name="Label" type="Label" parent="Container/VBoxContainer/HBoxContainer/Itens/Logo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.952941, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_wrwyh")
+theme_override_font_sizes/font_size = 32
+text = "Magical Quest"
+
+[node name="HSeparator3" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/Itens"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="Inicio" type="Button" parent="Container/VBoxContainer/HBoxContainer/Itens"]
+layout_mode = 2
+theme = ExtResource("4_ewsva")
+text = "Novo Jogo"
+
+[node name="HSeparator" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/Itens"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="Sair" type="Button" parent="Container/VBoxContainer/HBoxContainer/Itens"]
+layout_mode = 2
+theme = ExtResource("4_ewsva")
+text = "Sair"
+
+[node name="VSeparator" type="VSeparator" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qepmf")
+
+[node name="VSeparator2" type="VSeparator" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qepmf")
+
+[node name="VSeparator3" type="VSeparator" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qepmf")
+
+[node name="VSeparator4" type="VSeparator" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qepmf")
+
+[node name="RankUsuario" type="VBoxContainer" parent="Container/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HSeparator2" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="HSeparator3" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="HSeparator4" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="HSeparator5" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="HSeparator6" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="HSeparator7" type="HSeparator" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cgm8o")
+
+[node name="Label" type="Label" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwyh")
+text = "Rank de Usuario
+"
+horizontal_alignment = 1
+
+[node name="prim" type="Label" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwyh")
+text = "1° xxxxx - 1000 pts
+"
+horizontal_alignment = 1
+
+[node name="secon" type="Label" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwyh")
+text = "2° xxxxx - 1000 pts
+"
+horizontal_alignment = 1
+
+[node name="terc" type="Label" parent="Container/VBoxContainer/HBoxContainer/RankUsuario"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwyh")
+text = "3° xxxxx - 1000 pts
+"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwyh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ic0f3")
+text = "Ativar Controles"
+alignment = 1
+icon_alignment = 2
+
+[connection signal="pressed" from="Container/VBoxContainer/HBoxContainer/Itens/Inicio" to="." method="_on_inicio_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/HBoxContainer/Itens/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/CheckButton" to="." method="_on_check_button_pressed"]

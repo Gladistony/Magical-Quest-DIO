@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dhc257gbqi3rw"]
+
+[ext_resource type="FontFile" uid="uid://ddsioq8mwkig1" path="res://Assets/Fontes/RevMiniPixel.ttf" id="1_lfq0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aikba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3side"]
+bg_color = Color(1, 0.117647, 0.117647, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.380392, 0, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm6oe"]
+bg_color = Color(0.980392, 0.380392, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.117647, 0.117647, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfoda"]
+bg_color = Color(0.980392, 0.772549, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.380392, 0, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_lfq0d")
+Button/styles/focus = SubResource("StyleBoxEmpty_aikba")
+Button/styles/hover = SubResource("StyleBoxFlat_3side")
+Button/styles/normal = SubResource("StyleBoxFlat_cm6oe")
+Button/styles/pressed = SubResource("StyleBoxFlat_sfoda")

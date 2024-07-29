@@ -4,10 +4,10 @@ extends Node2D
 @onready var area_intro = $Area_Intro
 
 const lines : Array[String] = [
-	'Bem vindo !!',
-	"Para ganhar, se mova ate o outro lado do mapa",
-	"Cuidado com os inimigos",
-	"Boa sorte"
+	'Caminho invisivel adiante ...',
+	"Se as 7 caixas vermelhas voce quebrar",
+	"O caminho oculto vai se revelar",
+	"Boa Sorte !!!!"
 ]
 
 func _unhandled_input(event):

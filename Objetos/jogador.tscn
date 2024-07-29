@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://78txebxaw60g"]
+[gd_scene load_steps=31 format=3 uid="uid://78txebxaw60g"]
 
 [ext_resource type="Script" path="res://Scripts/Objetos/jogador.gd" id="1_4fxeo"]
 [ext_resource type="Texture2D" uid="uid://cdjravmfra40y" path="res://Assets/Imagem/Sprite Pack 1/1 - Mr. Man/Idle (16 x 16).png" id="2_2cj7s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://co0fqj24ho5nd" path="res://Assets/Imagem/Sprite Pack 1/1 - Mr. Man/Jumping (16 x 16).png" id="4_44000"]
 [ext_resource type="Texture2D" uid="uid://bfijxv3u30532" path="res://Assets/Imagem/Sprite Pack 1/1 - Mr. Man/Run (16 x 16).png" id="5_5a44w"]
 [ext_resource type="Texture2D" uid="uid://bpjw80n3eq3ks" path="res://Assets/Imagem/Sprite Pack 1/1 - Mr. Man/Swimming (16 x 16).png" id="6_d73tu"]
+[ext_resource type="AudioStream" uid="uid://b6mqj58eljpsd" path="res://Sons/jump.wav" id="7_pyi0d"]
+[ext_resource type="AudioStream" uid="uid://b0madnsclftjh" path="res://Sons/break.wav" id="8_f3mn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4avo"]
 size = Vector2(8, 14)
@@ -197,14 +199,16 @@ debug_color = Color(0.909804, 0.207843, 0.537255, 0.419608)
 [node name="remote_Camera" type="RemoteTransform2D" parent="."]
 
 [node name="Ray_Right" type="RayCast2D" parent="."]
-position = Vector2(4, 2)
+position = Vector2(4, -2)
 target_position = Vector2(4, 0)
 collision_mask = 4
+hit_from_inside = true
 
 [node name="Ray_Left" type="RayCast2D" parent="."]
-position = Vector2(-4, 2)
+position = Vector2(-4, -2)
 target_position = Vector2(-4, 0)
 collision_mask = 4
+hit_from_inside = true
 
 [node name="head_collide" type="Area2D" parent="."]
 collision_layer = 0
@@ -213,6 +217,14 @@ collision_mask = 64
 [node name="headColision" type="CollisionShape2D" parent="head_collide"]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_cp6gl")
+
+[node name="jump_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pyi0d")
+volume_db = -7.0
+
+[node name="destroy_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f3mn1")
+volume_db = 10.0
 
 [connection signal="body_entered" from="hurt_box" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="head_collide" to="." method="_on_head_collide_body_entered"]

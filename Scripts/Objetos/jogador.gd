@@ -10,11 +10,15 @@ var is_jump = false
 var direction = 0
 
 var knockback_vector = Vector2.ZERO
+var knockback_power := 20
 
 @onready var animation := $Animacao as AnimatedSprite2D
 @onready var remote_camera = $remote_Camera
 @onready var ray_right = $Ray_Right as RayCast2D
 @onready var ray_left = $Ray_Left as RayCast2D
+@onready var jump_sfx = $jump_sfx as AudioStreamPlayer
+@onready var destroy_sfx = $destroy_sfx as AudioStreamPlayer
+
 
 signal player_has_died()
 
@@ -27,6 +31,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jump = true
+		jump_sfx.play()
 	elif  is_on_floor():
 		is_jump = false
 
@@ -52,10 +57,12 @@ func _physics_process(delta):
 
 
 func _on_hurt_box_body_entered(body):
-	if ray_left.is_colliding():
-		take_damage(body.dano_causado,Vector2(200,-200))
-	elif ray_right.is_colliding():
-		take_damage(body.dano_causado,Vector2(-200,-200))
+	var knockback = Vector2((global_position.x - body.global_position.x) *knockback_power , -200)
+	take_damage(body.dano_causado, knockback)
+		
+	
+	if body.is_in_group("fireball"):
+		body.queue_free()
 
 func take_damage(dano := 1, knokback_force := Vector2.ZERO, duration := 0.25):
 	if Global.life > dano:
@@ -91,8 +98,15 @@ func _on_head_collide_body_entered(body):
 	if body.has_method("sprites_Pedacos"):
 		if body.hitpoint < 1:
 			body.sprites_Pedacos()
+			destroy_sfx.play()
 		else:
 			body.animation_player.play("hit")
 			body.hitpoint -= 1
+			body.hit_block.play(0.1)
 			body.creat_coin()
 		
+func handle_death_zone():
+	visible = false
+	set_physics_process(false)
+	await  get_tree().create_timer(1.0).timeout
+	Global.game_over()

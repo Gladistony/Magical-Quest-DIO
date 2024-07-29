@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi2amux3y5n5"]
+[gd_scene load_steps=10 format=3 uid="uid://bi2amux3y5n5"]
 
 [ext_resource type="Texture2D" uid="uid://dbwdgh2j6614b" path="res://Assets/Imagem/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_2sq2r"]
 [ext_resource type="Script" path="res://Scripts/Objetos/CaixaQuebravel.gd" id="1_q6r8s"]
 [ext_resource type="Shader" path="res://Assets/Caixa Quebravel/hit_flash.gdshader" id="2_ijapw"]
+[ext_resource type="AudioStream" uid="uid://c0vxddenl0bkk" path="res://Sons/tap.wav" id="4_l6g3n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8iifw"]
 resource_local_to_scene = true
@@ -96,3 +97,7 @@ libraries = {
 
 [node name="spawn_coin" type="Marker2D" parent="."]
 position = Vector2(0, -8)
+
+[node name="hit_block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l6g3n")
+volume_db = 10.0

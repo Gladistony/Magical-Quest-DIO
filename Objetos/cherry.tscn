@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfh8pwa5ucd7j"]
+
+[ext_resource type="Script" path="res://Scripts/Objetos/cherry.gd" id="1_rr1g8"]
+[ext_resource type="Texture2D" uid="uid://bt8u4nf4yg1wv" path="res://Assets/Imagem/Sprite Pack 2/7 - Rocket Cherry/Hopping (16 x 32).png" id="2_mb6xg"]
+[ext_resource type="Texture2D" uid="uid://cq5cid1eq7txh" path="res://Assets/Imagem/Sprite Pack 2/7 - Rocket Cherry/Hurt (16 x 32).png" id="3_ogf6y"]
+[ext_resource type="PackedScene" uid="uid://c8sxtjfvfy6y3" path="res://Objetos/hitbox.tscn" id="4_tin52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abf5v"]
+size = Vector2(14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6lne"]
+atlas = ExtResource("2_mb6xg")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn352"]
+atlas = ExtResource("2_mb6xg")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh7u0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6lne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn352")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ogf6y")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev2un"]
+size = Vector2(14, 4)
+
+[node name="cherry" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_rr1g8")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_abf5v")
+
+[node name="Animacao" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gh7u0")
+autoplay = "default"
+
+[node name="hitbox" parent="." instance=ExtResource("4_tin52")]
+
+[node name="Collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_ev2un")
+
+[node name="autoExcluir" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="autoExcluir" to="." method="_on_auto_excluir_screen_exited"]

@@ -5,6 +5,7 @@ const coin_instance = preload("res://Objetos/coin_rigid.tscn")
 
 @onready var animation_player := $anim as AnimationPlayer
 @onready var spawn := $spawn_coin as Marker2D
+@onready var hit_block = $hit_block as AudioStreamPlayer
 
 @export var pieces: PackedStringArray
 @export var hitpoint := 3
@@ -19,6 +20,7 @@ func sprites_Pedacos():
 		piece_instance.global_position = global_position
 		piece_instance.apply_impulse(Vector2(randi_range(-impulse,impulse),randi_range(-impulse, -impulse*2)))
 	queue_free()	
+	Global.caixas_quebradas += 1
 
 func creat_coin():
 	var coin = coin_instance.instantiate()
